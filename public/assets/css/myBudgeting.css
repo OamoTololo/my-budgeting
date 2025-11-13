@@ -1,0 +1,445 @@
+/* ===============================
+   RESET & BASE STYLES
+================================= */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+}
+
+/* Prevent Main.php .container from breaking dashboard layout */
+body.dashboard-active .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+
+/* ===============================
+   LOGIN PAGE STYLES
+================================= */
+.loginContainer {
+    background: url('../img/background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.loginHeader {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.loginHeader h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.loginHeader p {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 5px;
+}
+
+.loginBody form {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginBody label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.loginBody input[type="text"],
+.loginBody input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border 0.3s ease;
+}
+
+.loginBody input[type="text"]:focus,
+.loginBody input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+/* ===============================
+   DASHBOARD LAYOUT
+================================= */
+#dashboardMainContainer {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f7fa;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #2c3e50, #1a252f);
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+/* Sidebar Logo */
+h3.sidebarLogo {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 20px 0;
+    margin: 0;
+    color: #1abc9c;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Sidebar User */
+.sidebarUser {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebarUser img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    border: 2px solid #1abc9c;
+    transition: transform 0.3s ease;
+}
+.sidebarUser img:hover {
+    transform: scale(1.08);
+}
+
+.sidebarUser h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.sidebarUser .role {
+    color: #aaa;
+    font-size: 13px;
+}
+
+/* Sidebar Menu */
+.sidebarMenu {
+    flex-grow: 1;
+    margin-top: 15px;
+}
+
+.sidebarMenuLists {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebarMenuLists li {
+    margin-bottom: 5px;
+}
+
+.sidebarMenuLists li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.sidebarMenuLists li a i {
+    font-size: 18px;
+    opacity: 0.85;
+    transition: color 0.3s ease;
+}
+
+.sidebarMenuLists li a:hover,
+.sidebarMenuLists li.active a {
+    color: #1abc9c;
+    background: rgba(26, 188, 156, 0.15);
+    border-left: 4px solid #1abc9c;
+}
+
+/* ===============================
+   DASHBOARD CONTENT AREA
+================================= */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+/* Top Navigation */
+.contentNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+}
+
+.contentNav h2 {
+    font-size: 22px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.contentNav a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.contentNav a:hover {
+    color: #1abc9c;
+}
+
+/* Dashboard Welcome Area */
+.dashboardWelcome {
+    margin-bottom: 20px;
+}
+
+.dashboardWelcome h1 {
+    font-size: 26px;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.dashboardWelcome p {
+    color: #555;
+    font-size: 15px;
+}
+
+/* Page Title */
+.dashboard-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* Dashboard Stats */
+.dashboardMainContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+/* Cards */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Auto-responsive grid */
+    gap: 1.5rem; /* Space between cards */
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+.stat-card h3 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.statIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-right: 15px;
+    font-size: 22px;
+}
+
+.statDetails h5 {
+    font-size: 15px;
+    margin: 0;
+    color: #555;
+}
+
+.statDetails h3 {
+    font-weight: 700;
+    margin: 5px 0 0;
+    color: #2c3e50;
+}
+
+/* Different card colors */
+.bg-blue { background: #3498db; }
+.bg-green { background: #1abc9c; }
+.bg-orange { background: #f39c12; }
+.bg-red { background: #e74c3c; }
+
+/* Recent Activity */
+.recent-activity {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* ===============================
+   GENERAL UTILITY STYLES
+================================= */
+.error-message {
+    color: red;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Spinner Overlay */
+.spinnerOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .dashboardContainer {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .contentNav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    .loginHeader h1 {
+        font-size: 1.6em;
+    }
+    button {
+        font-size: 0.95em;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
