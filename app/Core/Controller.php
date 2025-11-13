@@ -6,9 +6,9 @@ class Controller
 {
     protected Logger $logger;
 
-    public function __construct(Logger $logger)
+    public function __construct()
     {
-        $this->logger = $logger;
+        $this->logger = new Logger();
     }
 
     /**
