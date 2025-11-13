@@ -36,7 +36,7 @@ class Logger
     {
         $this->log('INFO', $message, $context);
     }
-    public function warning(string $message, array  $context):void
+    public function warning(string $message, array $context = []):void
     {
         $this->log('WARNING', $message, $context);
     }
