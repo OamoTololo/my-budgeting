@@ -1,15 +1,15 @@
 <?php
-// Database Connection
 
-$dsn = 'mysql:host=localhost;dbname=myBudgeting;charset=utf8mb4';
-$username = 'root';
-$password = 'Tshimologo@23352433';
+return [
+    'app_name' => 'My Budgeting Application',
+    'env' => 'dev',
+    'debug' => true,
 
-try {
-    $db = new PDO($dsn, $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ]);
-} catch (PDOException $e) {
-    die('Database connection failed: ' . $e->getMessage());
-}
+    // Database credentials
+    'db' => [
+        'host' => 'localhost',
+        'user' => 'root',
+        'pass' => 'Tshimologo@23352433',
+        'name' => 'My Budgeting Application',
+    ]
+];
